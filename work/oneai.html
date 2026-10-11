@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The HR assistant 1,300 employees can ask in Teams · Sadman Araf</title>
+  <meta name="description" content="A grounded HR-policy assistant inside Microsoft Teams, and the service built for its next version: what I built and how I built it.">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/styles.css">
+  <noscript><style>.tech { display: block; }</style></noscript>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap bar">
+    <a class="brand" href="../index.html">Sadman Araf</a>
+    <div class="view-toggle" role="group" aria-label="Level of detail">
+      <button type="button" data-view="plain" aria-pressed="true">Plain English</button>
+      <button type="button" data-view="technical" aria-pressed="false">Technical</button>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap case">
+  <p class="back"><a href="../index.html#work">← All work</a></p>
+
+  <p class="meta"><span class="badge solid">Production</span><span>Next version built</span><span>2025–2026</span><span>Led product and build</span></p>
+  <h1>The HR assistant 1,300 employees can ask in Teams</h1>
+  <p class="lede">A grounded HR-policy assistant inside Microsoft Teams, designed as the single governed entry point for HR, finance, IT, compliance and corporate-affairs services.</p>
+
+  <dl class="glance">
+    <dt>Scale</dt><dd>The full employee base, about 1,300 people</dd>
+    <dt class="tech">Launched on</dt><dd class="tech">Microsoft Copilot Studio, Microsoft Teams, SharePoint, Dataverse</dd>
+    <dt class="tech">Next version</dt><dd class="tech">Azure AI Foundry agent; Dockerised FastAPI microservice with JWT auth and SSE streaming; GitHub Actions CI/CD and Azure Container Registry to Azure Container Apps; MCP server for employee context</dd>
+    <dt>Shape</dt><dd>One assistant where employees already work, built to become the front door for other functions</dd>
+  </dl>
+
+  <section>
+    <h2>The problem</h2>
+    <p>HR policy lives in long documents. Employees needed one governed place to ask, with an answer they could trace back to the policy. The same front door was designed to open later onto finance, IT, compliance and corporate affairs.</p>
+  </section>
+
+  <section>
+    <h2>What I built</h2>
+    <p class="hint">Follow one made-up question through the system.</p>
+    <ol class="steps">
+      <li><span class="name">Ask</span>
+        <p>An employee asks: "How many unused leave days can I carry into next year?"</p>
+        <p class="tech">Copilot Studio agent in Microsoft Teams; in the next version, the internal employee app calling the service</p></li>
+      <li><span class="name">Sign in</span>
+        <p>The service checks who is calling.</p>
+        <p class="tech">JWT authentication</p></li>
+      <li><span class="name">Context</span>
+        <p>The agent looks up what it needs to know about the employee to apply the policy.</p>
+        <p class="tech">MCP server giving the Azure AI Foundry agent employee context</p></li>
+      <li><span class="name">Find</span>
+        <p>It searches the HR policy documents for the passages that apply.</p>
+        <p class="tech">Retrieval over the HR policy corpus</p></li>
+      <li><span class="name">Answer</span>
+        <p>It answers from those passages and cites the policy.</p>
+        <p class="tech">Grounding and citation behaviour</p></li>
+      <li><span class="name">Stream</span>
+        <p>The answer appears word by word.</p>
+        <p class="tech">SSE streaming from a FastAPI service on Azure Container Apps</p></li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>How I built it</h2>
+    <ol class="decisions">
+      <li><strong>Grounded, with citations.</strong> Answers come from the HR policy corpus and name their source. I owned the retrieval design and the citation and grounding behaviour.</li>
+      <li><strong>Launch where people already work.</strong> The first version went to the whole company inside Teams, on Copilot Studio over the policy documents in SharePoint.</li>
+      <li><strong>One front door.</strong> It was designed from the start as the single governed entry point, so agents for other functions could sit behind it.</li>
+      <li><strong>The next version as its own service.</strong> A Dockerised FastAPI microservice with JWT authentication and streamed responses, so the assistant can be integrated with the internal employee app. Semantic search, voice input, feedback capture and chat history were designed for this phase.</li>
+      <li><strong>Employee context through MCP.</strong> A separate server gives the agent employee context. The agent calls it when an answer depends on who is asking, and it receives the attributes a policy answer depends on.</li>
+      <li><strong>Shipped through a pipeline.</strong> GitHub Actions builds the container, pushes it to Azure Container Registry and deploys it to Azure Container Apps.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>How it was tested</h2>
+    <p>I owned the evaluation method. Answers were assessed for grounding and accuracy against the policy text.</p>
+  </section>
+
+  <section>
+    <h2>My part and the team's</h2>
+    <p>I led development and launch, owned retrieval design, citation and grounding behaviour and the evaluation method, and built the backend for the next version and its MCP server. HR owned the policy content.</p>
+  </section>
+
+  <details class="hood">
+    <summary>Under the hood</summary>
+    <ul>
+      <li>Launch stack: Copilot Studio, Teams, SharePoint knowledge, Dataverse.</li>
+      <li>Next version: an Azure AI Foundry agent behind a FastAPI service, with JWT auth, SSE streaming, container images in Azure Container Registry, and Azure Container Apps.</li>
+      <li>The MCP server exposes employee context to the agent as a tool.</li>
+    </ul>
+  </details>
+
+  <section>
+    <h2>What's next</h2>
+    <p>Semantic search, voice input, feedback capture and chat history, inside the internal employee app.</p>
+  </section>
+
+  <nav class="next" aria-label="Next case study">
+    <span>Next</span>
+    <a href="field-genie.html">An LLM agent for field network engineers →</a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">© 2026 Sadman Araf. Described in words, with made-up data. No proprietary data.</div>
+</footer>
+
+<script src="../assets/site.js"></script>
+</body>
+</html>

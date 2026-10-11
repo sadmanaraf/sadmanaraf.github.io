@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>A GenAI roaming assistant, built with BCG and Meta · Sadman Araf</title>
+  <meta name="description" content="A conversational assistant in a telecom self-care app that answers roaming questions and recommends the right pack: what I built and how I built it.">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/styles.css">
+  <noscript><style>.tech { display: block; }</style></noscript>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap bar">
+    <a class="brand" href="../index.html">Sadman Araf</a>
+    <div class="view-toggle" role="group" aria-label="Level of detail">
+      <button type="button" data-view="plain" aria-pressed="true">Plain English</button>
+      <button type="button" data-view="technical" aria-pressed="false">Technical</button>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap case">
+  <p class="back"><a href="../index.html#work">← All work</a></p>
+
+  <p class="meta"><span class="badge">Pilot</span><span>Completed</span><span>2024–2025</span><span>AI lead and product manager</span></p>
+  <h1>A GenAI roaming assistant, built with BCG and Meta</h1>
+  <p class="lede">A conversational assistant in the self-care app that answers roaming questions and recommends the right roaming pack.</p>
+
+  <dl class="glance">
+    <dt>Scale</dt><dd>A three-week pilot across 1M subscribers</dd>
+    <dt class="tech">Stack</dt><dd class="tech">Meta Llama 3.x on AWS Bedrock, OpenAI, REST APIs, the operator's self-care app</dd>
+    <dt>Partners</dt><dd>BCG and Meta</dd>
+    <dt>Shape</dt><dd>A conversational AI service in the cloud, connected through middleware on the operator's own servers to the app, the customer data and the existing chatbot</dd>
+  </dl>
+
+  <section>
+    <h2>The problem</h2>
+    <p>Roaming raises many questions, and the right pack depends on who is asking. The aim was to answer roaming questions in conversation, identify likely roamers, and guide them to activation and the right pack.</p>
+  </section>
+
+  <section>
+    <h2>What we built</h2>
+    <p class="hint">Follow one customer through the system.</p>
+    <ol class="steps">
+      <li><span class="name">Target</span>
+        <p>The system works out who is roaming now and who is not.</p>
+        <p class="tech">Customer context and targeting layer separating active roamers from non-roamers</p></li>
+      <li><span class="name">Ask</span>
+        <p>A subscriber types a roaming question in the self-care app.</p>
+        <p class="tech">Messages pass from the app to middleware on the operator's servers</p></li>
+      <li><span class="name">Add context</span>
+        <p>The middleware attaches what is known about this customer.</p>
+        <p class="tech">Customer context built from customer data held on the operator's servers</p></li>
+      <li><span class="name">Converse</span>
+        <p>The message and its context go to the conversational AI in the cloud, which replies.</p>
+        <p class="tech">Conversational API; Llama 3.x hosted on AWS Bedrock; context, user message and bot message exchanged on each turn</p></li>
+      <li><span class="name">Recommend</span>
+        <p>The reply answers the question and suggests the roaming pack that fits, shown in the app.</p>
+        <p class="tech">Customer context and product information supplied to the bot</p></li>
+      <li><span class="name">Hand over</span>
+        <p>A question outside the assistant's scope is passed to the app's existing chatbot.</p>
+        <p class="tech">Deflection event from the middleware to the existing chatbot</p></li>
+    </ol>
+
+    <figure class="diagram">
+      <div class="scroll">
+        <svg viewBox="0 0 720 300" role="img" aria-labelledby="roam-title roam-desc">
+          <title id="roam-title">How the roaming assistant is connected</title>
+          <desc id="roam-desc">The self-care app, the customer data and the existing chatbot sit on the operator's own servers and connect to a middleware layer. The middleware sends each message with customer context to a conversational AI service in the cloud and receives the reply.</desc>
+          <defs>
+            <marker id="head" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="d-head" d="M0 0 10 5 0 10z"/></marker>
+            <marker id="head-accent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path class="d-head accent" d="M0 0 10 5 0 10z"/></marker>
+          </defs>
+
+          <rect class="d-zone" x="8" y="8" width="242" height="284" rx="6"/>
+          <text class="d-zone-label" x="24" y="32">CLOUD</text>
+          <rect class="d-zone" x="300" y="8" width="412" height="284" rx="6"/>
+          <text class="d-zone-label" x="316" y="32">OPERATOR'S OWN SERVERS</text>
+
+          <rect class="d-box" x="32" y="96" width="190" height="112" rx="4"/>
+          <text class="d-text" x="127" y="142" text-anchor="middle">Conversational AI</text>
+          <text class="d-label" x="127" y="164" text-anchor="middle">co-developed with</text>
+          <text class="d-label" x="127" y="180" text-anchor="middle">BCG and Meta</text>
+
+          <rect class="d-box" x="340" y="96" width="140" height="112" rx="4"/>
+          <text class="d-text" x="410" y="157" text-anchor="middle">Middleware</text>
+
+          <rect class="d-box" x="548" y="44" width="148" height="52" rx="4"/>
+          <text class="d-text" x="622" y="75" text-anchor="middle">Self-care app</text>
+          <rect class="d-box" x="548" y="126" width="148" height="52" rx="4"/>
+          <text class="d-text" x="622" y="157" text-anchor="middle">Customer data</text>
+          <rect class="d-box" x="548" y="208" width="148" height="52" rx="4"/>
+          <text class="d-text" x="622" y="239" text-anchor="middle">Existing chatbot</text>
+
+          <line class="d-line accent" x1="340" y1="134" x2="222" y2="134" marker-end="url(#head-accent)"/>
+          <text class="d-label" x="281" y="124" text-anchor="middle">message + context</text>
+          <line class="d-line" x1="222" y1="172" x2="340" y2="172" marker-end="url(#head)"/>
+          <text class="d-label" x="281" y="190" text-anchor="middle">reply</text>
+
+          <line class="d-line" x1="548" y1="74" x2="480" y2="118" marker-start="url(#head)" marker-end="url(#head)"/>
+          <text class="d-label" x="508" y="84" text-anchor="end">messages</text>
+          <line class="d-line accent" x1="548" y1="152" x2="480" y2="152" marker-end="url(#head-accent)"/>
+          <text class="d-label" x="514" y="143" text-anchor="middle">context</text>
+          <line class="d-line" x1="480" y1="186" x2="548" y2="230" marker-start="url(#head)" marker-end="url(#head)"/>
+          <text class="d-label" x="508" y="226" text-anchor="end">hand-over</text>
+        </svg>
+      </div>
+      <figcaption>Diagram redrawn for publication. No proprietary data. The highlighted arrows show customer context travelling to the AI.</figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <h2>How it was built</h2>
+    <ol class="decisions">
+      <li><strong>Context before conversation.</strong> The bot is told who it is talking to, a roamer or not, and what packs exist, so both the answer and the recommendation fit the person.</li>
+      <li><strong>The AI in the cloud, the customer data at home.</strong> The conversational service runs in the cloud. Customer data stays on the operator's own servers, where a middleware layer turns it into the context the assistant needs and sends that with each message.</li>
+      <li><strong>One middleware, three connections.</strong> The app, the customer data and the existing chatbot all meet the AI through the same middleware. The app keeps a single chat surface, and a question outside the assistant's scope is handed to the existing chatbot along the same path.</li>
+      <li><strong>Llama 3.x on AWS Bedrock.</strong> The conversation runs on Meta's model, hosted on Bedrock.</li>
+      <li><strong>A controlled pilot.</strong> Three weeks, 1M subscribers, measured against a control group.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>How it was tested</h2>
+    <p>As a three-week pilot across 1M subscribers, against a control group.</p>
+  </section>
+
+  <section>
+    <h2>My part and the team's</h2>
+    <p>I was the AI lead and product manager of the project, coordinating between internal stakeholders (IT, Digital and Customer Experience), external partners (Meta and BCG) and management. It was built in partnership with BCG and Meta.</p>
+  </section>
+
+  <section>
+    <h2>What's next</h2>
+    <p>More users, and a version on WhatsApp.</p>
+  </section>
+
+  <nav class="next" aria-label="Next case study">
+    <span>Next</span>
+    <a href="ai-and-i.html">AI&amp;I: a company-wide programme to get every employee using AI →</a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">© 2026 Sadman Araf. Described in words, with made-up data. No proprietary data.</div>
+</footer>
+
+<script src="../assets/site.js"></script>
+</body>
+</html>

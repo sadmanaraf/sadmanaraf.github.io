@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>An LLM agent for field network engineers · Sadman Araf</title>
+  <meta name="description" content="An agent that answers field engineers' troubleshooting questions from manuals and looks up alarm and site records: what I built and how I built it.">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/styles.css">
+  <noscript><style>.tech { display: block; }</style></noscript>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap bar">
+    <a class="brand" href="../index.html">Sadman Araf</a>
+    <div class="view-toggle" role="group" aria-label="Level of detail">
+      <button type="button" data-view="plain" aria-pressed="true">Plain English</button>
+      <button type="button" data-view="technical" aria-pressed="false">Technical</button>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap case">
+  <p class="back"><a href="../index.html#work">← All work</a></p>
+
+  <p class="meta"><span class="badge">Pilot</span><span>2025–2026</span><span>Co-lead and core developer</span></p>
+  <h1>An LLM agent for field network engineers</h1>
+  <p class="lede">An agent that answers field engineers' troubleshooting questions from operating procedures and vendor manuals, and looks up alarm and site records for them.</p>
+
+  <dl class="glance">
+    <dt>Users</dt><dd>Field technicians, in a pilot</dd>
+    <dt class="tech">Stack</dt><dd class="tech">Azure AI Search, text-embedding-3-large, MCP tools, text-to-SQL, React</dd>
+    <dt>Languages</dt><dd>Bangla, English and Banglish</dd>
+  </dl>
+
+  <section>
+    <h2>The problem</h2>
+    <p>A technician at a site needs the right procedure and the right record quickly. The knowledge is spread across operating procedures, vendor manuals and alarm and site databases, and technicians write the way they speak, mixing Bangla and English.</p>
+  </section>
+
+  <section>
+    <h2>What I built</h2>
+    <p class="hint">Follow one made-up request through the system.</p>
+    <ol class="steps">
+      <li><span class="name">Ask</span>
+        <p>A technician types: "What alarms did SITE-0421 raise last night, and how do I clear the first one?"</p>
+        <p class="tech">React front end; Bangla, English or Banglish</p></li>
+      <li><span class="name">Decide</span>
+        <p>The agent works out that it needs live records and a procedure.</p>
+        <p class="tech">LLM agent choosing among MCP tools</p></li>
+      <li><span class="name">Query</span>
+        <p>It writes a database query for that site's alarms and runs it.</p>
+        <p class="tech">Text-to-SQL on alarm and site records</p></li>
+      <li><span class="name">Look up</span>
+        <p>It finds the procedure for that alarm in the manuals.</p>
+        <p class="tech">RAG on Azure AI Search: ingestion, text-embedding-3-large embeddings, retrieval over SOPs and vendor manuals</p></li>
+      <li><span class="name">Answer</span>
+        <p>It replies with the alarms it found and the steps to clear the first one.</p>
+        <p class="tech">Answer grounded in the query result and the retrieved passages</p></li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>How I built it</h2>
+    <ol class="decisions">
+      <li><strong>Two kinds of knowledge, two routes.</strong> Procedures are documents, so they are retrieved. Alarms and site details are tables that change by the hour, so they are queried. One agent chooses between them.</li>
+      <li><strong>Tools over MCP.</strong> Text-to-SQL and the other tools reach the agent as MCP tools, so they can be reused by other agents and given only the access they need.</li>
+      <li><strong>A retrieval pipeline built end to end.</strong> Ingestion, embeddings with text-embedding-3-large and retrieval on Azure AI Search, measured with RAGAS.</li>
+      <li><strong>The technician's language first.</strong> Bangla, English and Banglish from the first version.</li>
+      <li><strong>Piloted with the people who use it.</strong> It went to field technicians as a pilot.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>How it was tested</h2>
+    <p>Retrieval was evaluated with RAGAS, and the agent was piloted with field technicians.</p>
+  </section>
+
+  <section>
+    <h2>My part and the team's</h2>
+    <p>I co-led the project and was one of two core developers. Field operations supplied the procedures and tested it on site.</p>
+  </section>
+
+  <details class="hood">
+    <summary>Under the hood</summary>
+    <ul>
+      <li>Retrieval: ingestion of SOPs and vendor manuals, text-embedding-3-large embeddings, Azure AI Search.</li>
+      <li>Tools: MCP tools, including text-to-SQL on alarm and site records.</li>
+      <li>Front end: React.</li>
+    </ul>
+  </details>
+
+  <section>
+    <h2>What's next</h2>
+    <p>Image and voice input, historical alarms and internal tools, predictive maintenance, and the move from pilot to production.</p>
+  </section>
+
+  <nav class="next" aria-label="Next case study">
+    <span>Next</span>
+    <a href="roaming-assistant.html">A GenAI roaming assistant, built with BCG and Meta →</a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">© 2026 Sadman Araf. Described in words, with made-up data. No proprietary data.</div>
+</footer>
+
+<script src="../assets/site.js"></script>
+</body>
+</html>

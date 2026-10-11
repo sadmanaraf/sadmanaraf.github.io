@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Choosing the next best offer for ~85M subscribers · Sadman Araf</title>
+  <meta name="description" content="A deep-learning recommender that picks up to five offers for each subscriber every month: what I built and how I built it.">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/styles.css">
+  <noscript><style>.tech { display: block; }</style></noscript>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap bar">
+    <a class="brand" href="../index.html">Sadman Araf</a>
+    <div class="view-toggle" role="group" aria-label="Level of detail">
+      <button type="button" data-view="plain" aria-pressed="true">Plain English</button>
+      <button type="button" data-view="technical" aria-pressed="false">Technical</button>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap case">
+  <p class="back"><a href="../index.html#work">← All work</a></p>
+
+  <p class="meta"><span class="badge solid">Production</span><span>2023–2026</span><span>Data scientist and model owner</span></p>
+  <h1>Choosing the next best offer for ~85M subscribers</h1>
+  <p class="lede">A deep-learning recommender that picks up to five offers for each subscriber every month, in the self-care app, the retail app, the digital-first sub-brand and SMS channels.</p>
+
+  <dl class="glance">
+    <dt>Scale</dt><dd>~85M subscribers scored each month, 150+ behaviour signals, about 20M training samples</dd>
+    <dt class="tech">Stack</dt><dd class="tech">Python, TensorFlow, Oracle, SHAP, Qwen2.5-7B served locally with vLLM; Kubernetes, Kubeflow, MLflow</dd>
+    <dt>Shape</dt><dd>A monthly retraining pipeline whose stages can be run again safely</dd>
+  </dl>
+
+  <section>
+    <h2>The problem</h2>
+    <p>Every subscriber used to see the same few promotional offers. With tighter limits on promotional SMS, each message has to fit the person receiving it. That means choosing, for every subscriber, the few packs they are most likely to want next.</p>
+  </section>
+
+  <section>
+    <h2>What I built</h2>
+    <p class="hint">Follow one made-up subscriber, Subscriber A, through the system.</p>
+    <ol class="steps">
+      <li><span class="name">Gather</span>
+        <p>Subscriber A's recent usage, spending, top-ups and past purchases are pulled together in the data warehouse.</p>
+        <p class="tech">Feature construction over partitioned Oracle tables</p></li>
+      <li><span class="name">Shape</span>
+        <p>Raw numbers become behaviour signals covering usage, revenue, top-ups, handset, location, products and app behaviour.</p>
+        <p class="tech">150+ behavioural KPIs</p></li>
+      <li><span class="name">Route</span>
+        <p>Subscribers with a purchase history go to one model. Those without go to another.</p>
+        <p class="tech">Two deep neural networks</p></li>
+      <li><span class="name">Score</span>
+        <p>The model gives every pack a probability, and up to five offers are kept.</p>
+        <p class="tech">n-class pack prediction; batched GPU inference</p></li>
+      <li><span class="name">Deliver</span>
+        <p>The offers appear in the self-care app, the retail app and the digital-first sub-brand, and go out by SMS, with a small group held back for comparison.</p>
+        <p class="tech">5% control group</p></li>
+      <li><span class="name">Check</span>
+        <p>Each month, what was recommended is compared with what people bought.</p>
+        <p class="tech">Monthly in-market back-tests against actual purchases</p></li>
+      <li><span class="name">Explain</span>
+        <p>A dashboard shows which signals pushed a pack up or down for a subscriber, in a plain sentence.</p>
+        <p class="tech">SHAP (GradientExplainer); natural-language explanations from the local LLM; model health and attribution dashboard</p></li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>How I built it</h2>
+    <ol class="decisions">
+      <li><strong>Two models, not one.</strong> Subscribers who have never bought a pack have none of the purchase-history signals the main model leans on. They get their own model with its own inputs.</li>
+      <li><strong>Focal loss with square-root-dampened class weights.</strong> A few packs outsell the rest many times over, and a plain classifier learns to recommend those to everyone. Focal loss makes the network attend to the rarer packs, and the dampened weights keep that correction from overshooting. Class collapse is detected automatically.</li>
+      <li><strong>Stages that can be run again safely.</strong> A monthly run at full scale is long, and any stage can fail. Each stage replaces its output instead of adding to it and skips work that is already done, so a failed run restarts from the stage that failed.</li>
+      <li><strong>Batched inference on a GPU.</strong> The whole base is scored in batches, keeping each subscriber's top offers before moving on.</li>
+      <li><strong>Measure more than accuracy.</strong> Hit@K and NDCG@K say whether the right pack is near the top. Revenue capture asks whether the model finds high-value packs or only the popular ones.</li>
+      <li><strong>Explanations people can read.</strong> SHAP shows which signals moved a recommendation. A locally served LLM is given that evidence and turns it into a sentence for the dashboard.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>How it was tested</h2>
+    <p>In two layers. Offline, on held-out data, with Hit@K, NDCG@K, revenue capture and automated class-collapse detection. In market, through monthly back-tests against actual purchases with a 5% control group.</p>
+  </section>
+
+  <section>
+    <h2>My part and the team's</h2>
+    <p>I was the data scientist and named model owner. I built and evaluated the models and the pipeline, and coordinated production and channel execution.</p>
+  </section>
+
+  <section>
+    <h2>In public</h2>
+    <ul>
+      <li><a href="https://www.linkedin.com/feed/update/urn:li:activity:7214693095920082944/">My first Qaward, Grameenphone's highest award for an initiative</a> (July 2024)</li>
+      <li><a href="https://www.linkedin.com/feed/update/urn:li:activity:7387737945052495872/">The quarterly award for AI-powered personalisation in the retail channel</a> (October 2025)</li>
+    </ul>
+  </section>
+
+  <details class="hood">
+    <summary>Under the hood</summary>
+    <ul>
+      <li>Framed as n-class pack prediction, with separate models for subscribers with and without purchase history.</li>
+      <li>Reproducible monthly retraining at full scale: feature construction, training, batched GPU inference, back-test.</li>
+      <li>Part of the personalisation platform on Kubernetes, Kubeflow and MLflow.</li>
+      <li>The same approach was extended to a retailer top-up recommender (a multi-class classifier over about 100 features that recommends the top ten offers, rolled out nationally across six regions after three controlled pilots), then to the digital-first sub-brand, the outbound dialler and channel-preference decisioning.</li>
+    </ul>
+  </details>
+
+  <section>
+    <h2>What's next</h2>
+    <p>Weekly scoring in place of monthly, and a two-stage design: will this subscriber buy at all, then which pack.</p>
+  </section>
+
+  <nav class="next" aria-label="Next case study">
+    <span>Next</span>
+    <a href="oneai.html">The HR assistant 1,300 employees can ask in Teams →</a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">© 2026 Sadman Araf. Described in words, with made-up data. No proprietary data.</div>
+</footer>
+
+<script src="../assets/site.js"></script>
+</body>
+</html>

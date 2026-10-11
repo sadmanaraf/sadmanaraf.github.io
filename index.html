@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sadman Araf · AI engineer and data scientist, Dublin</title>
+  <meta name="description" content="Five years building recommenders, AI assistants and agentic systems in production for about 85M telecom subscribers. MSc AI and NLP at DCU. Open to 2027 roles.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Sadman Araf · AI engineer and data scientist, Dublin">
+  <meta property="og:description" content="Five years building recommenders, AI assistants and agentic systems in production for about 85M telecom subscribers. MSc AI and NLP at DCU.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap bar">
+    <a class="brand" href="./">Sadman Araf</a>
+    <nav aria-label="Sections">
+      <a href="#about">About</a>
+      <a href="#work">Work</a>
+      <a href="#experience">Experience</a>
+      <a href="#research">Research</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">AI engineering · Data science · AI product · Dublin</p>
+      <h1>I build AI systems that reach production and get adopted.</h1>
+      <p class="lede">Five years at Bangladesh's two largest telecom operators, taking recommenders, AI assistants and agentic systems from prototype to national scale. Most recently AI Product Manager at Grameenphone (Telenor Group). Now in Dublin for an MSc in AI and NLP at DCU.</p>
+      <p class="status">Open to summer 2027 internships (from May) and full-time roles from October 2027</p>
+      <div class="actions">
+        <a class="btn" href="#work">See the work</a>
+      </div>
+      <dl class="scope">
+        <div><dt>~85M</dt><dd>subscribers served by the recommenders I owned</dd></div>
+        <div><dt>1,300</dt><dd>employees with the RAG assistant I launched in Teams</dd></div>
+        <div><dt>400+</dt><dd>colleagues trained on AI literacy</dd></div>
+        <div><dt>IEEE Q1</dt><dd>first-author journal paper on multi-agent reinforcement learning</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="block" id="about">
+    <div class="wrap">
+      <h2>About</h2>
+      <!-- Portrait: add assets/portrait.jpg, then uncomment.
+      <img src="assets/portrait.jpg" alt="Sadman Araf" width="160" height="160">
+      -->
+      <div class="prose">
+        <p>I spent five years building AI inside Bangladesh's two largest telecom operators. I started with the models: deep-learning recommenders that choose offers for about 85 million subscribers every month. Then the work kept pulling me outward, into AI assistants and agentic systems for HR, finance and field engineers, into the GPU platform they run on, and into AI&amp;I, the company-wide programme to get every employee using AI, where I was on the core team and taught 400 colleagues in hands-on workshops. I left Grameenphone as AI Product Manager.</p>
+        <p>In 2026 I moved to Dublin for an MSc in AI and NLP at DCU. After five years I knew what worked in production, and I didn't always know why. I'm here to close that gap, and to go deeper into engineering, not further from it.</p>
+        <p>I work best close to the people who will use the thing: prototype fast, demo early, test against a control group, and stay until it runs.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="work">
+    <div class="wrap">
+      <h2>Selected work</h2>
+
+      <div class="cards">
+
+        <article class="card">
+          <p class="meta"><span class="badge solid">Production</span><span>2023–2026</span><span>Model owner</span></p>
+          <h3><a class="cover" href="work/offer-recommender.html">Choosing the next best offer for ~85M subscribers</a></h3>
+          <p>A deep-learning recommender that picks up to five offers for each subscriber every month, in the self-care app, the retail app, the digital-first sub-brand and SMS channels.</p>
+          <dl class="built">
+            <dt>Built</dt><dd>Two neural networks over 150+ behaviour signals, and the monthly retraining pipeline</dd>
+            <dt>How</dt><dd>Focal loss for class imbalance; every stage safe to re-run; back-tested against a 5% control group</dd>
+          </dl>
+          <div class="card-foot"><p class="chips">TensorFlow · Oracle · SHAP</p><span class="go">Read case →</span></div>
+        </article>
+
+        <article class="card">
+          <p class="meta"><span class="badge solid">Production</span><span>2025–2026</span><span>Led product and build</span></p>
+          <h3><a class="cover" href="work/oneai.html">The HR assistant 1,300 employees can ask in Teams</a></h3>
+          <p>A grounded assistant that answers HR policy questions from the official documents and cites the policy.</p>
+          <dl class="built">
+            <dt>Built</dt><dd>Retrieval with citations over the policy corpus; the next version as a FastAPI service with an MCP server for employee context</dd>
+            <dt>How</dt><dd>Launched in Teams on Copilot Studio; next version shipped through CI/CD to Azure Container Apps</dd>
+          </dl>
+          <div class="card-foot"><p class="chips">Copilot Studio · Azure AI Foundry · MCP</p><span class="go">Read case →</span></div>
+        </article>
+
+        <article class="card">
+          <p class="meta"><span class="badge">Pilot</span><span>2025–2026</span><span>Co-lead, core developer</span></p>
+          <h3><a class="cover" href="work/field-genie.html">An LLM agent for field network engineers</a></h3>
+          <p>Answers troubleshooting questions from operating procedures and vendor manuals, and looks up alarm and site records.</p>
+          <dl class="built">
+            <dt>Built</dt><dd>RAG pipeline, MCP tools, text-to-SQL and a React front end</dd>
+            <dt>How</dt><dd>Retrieval evaluated with RAGAS; piloted with field technicians</dd>
+          </dl>
+          <div class="card-foot"><p class="chips">Azure AI Search · MCP · Text-to-SQL</p><span class="go">Read case →</span></div>
+        </article>
+
+        <article class="card">
+          <p class="meta"><span class="badge">Pilot</span><span>2024–2025</span><span>AI lead and product manager</span></p>
+          <h3><a class="cover" href="work/roaming-assistant.html">A GenAI roaming assistant, built with BCG and Meta</a></h3>
+          <p>A conversational assistant in the self-care app that answers roaming questions and recommends the right pack.</p>
+          <dl class="built">
+            <dt>Built</dt><dd>A conversational assistant connected through middleware to the app, the customer data and the existing chatbot</dd>
+            <dt>How</dt><dd>Led as AI lead and product manager across IT, Digital, Customer Experience, Meta and BCG. Llama 3.x on AWS Bedrock; a three-week pilot with 1M subscribers against a control group</dd>
+          </dl>
+          <div class="card-foot"><p class="chips">Llama 3.x · AWS Bedrock · REST APIs</p><span class="go">Read case →</span></div>
+        </article>
+
+        <article class="card wide">
+          <p class="meta"><span class="badge">Delivered</span><span>2025–2026</span><span>Core member</span></p>
+          <h3><a class="cover" href="work/ai-and-i.html">AI&amp;I: a company-wide programme to get every employee using AI</a></h3>
+          <p>One of Grameenphone's most important initiatives, championed by the CEO: a change programme to make AI understandable, relevant and usable for all 1,300 employees.</p>
+          <dl class="built">
+            <dt>Built</dt><dd>A townhall to announce it, learning programmes for every employee, and an Ideathon competition for AI ideas</dd>
+            <dt>How</dt><dd>I collaborated on the ideation, co-developed the training, co-authored the Ideathon framework, and judged Finance and HR ideas alongside their leaders</dd>
+          </dl>
+          <div class="card-foot"><p class="chips">Townhall · Learning programmes · Ideathon</p><span class="go">Read case →</span></div>
+        </article>
+
+      </div>
+
+      <h3 class="sub">Built in the open</h3>
+      <p class="note">Two recent hackathon builds in Dublin. The code is public, so you can read exactly how they work.</p>
+
+      <div class="cards">
+
+        <article class="card">
+          <p class="meta"><span class="badge dashed">Prototype</span><span>Sep 2026</span><span>Team of four; I led the pitch</span></p>
+          <h4>MedTrace: catching a copied medicine code on its second scan</h4>
+          <p>Anti-counterfeit medicine tracing. Every pack gets a unique serial and an append-only record on a public blockchain: minted, handed off, dispensed.</p>
+          <dl class="built">
+            <dt>Built</dt><dd>A Solana program with one account per pack serial, and a Next.js app with screens for the manufacturer, distributor, pharmacy and patient</dd>
+            <dt>How</dt><dd>A pack can be dispensed only once, so a clone is caught when it is scanned. Patients verify with a phone camera and need no wallet</dd>
+          </dl>
+          <p class="note">Build IRL Vol. 1, the Solana hackathon at Dogpatch Labs.</p>
+          <div class="card-foot"><p class="chips">Solana · Anchor (Rust) · Next.js</p><span><a href="https://medtrace-with-solana.vercel.app">Live app</a> · <a href="https://github.com/sadmanaraf/MedTrace-with-Solana">Code</a> · <a href="https://www.linkedin.com/feed/update/urn:li:activity:7510959613832237056/">Post</a></span></div>
+        </article>
+
+        <article class="card">
+          <p class="meta"><span class="badge dashed">Prototype</span><span>Oct 2026</span><span>Team build</span></p>
+          <h4>FixMyArea: from a photo of a street fault to a council report</h4>
+          <p>A civic assistant for Dublin. A resident submits a photo and a location, and gets a report draft or the nearest recycling centre.</p>
+          <dl class="built">
+            <dt>Built</dt><dd>A FastAPI backend with a CLIP image classifier and Dublin City Council open data, and a Next.js front end</dd>
+            <dt>How</dt><dd>The model only says what is in the photo. Code and open data choose the council, the nearest asset and the next step. An unclear photo is sent back for more detail</dd>
+          </dl>
+          <p class="note">Build for Ireland: the OpenAI hackathon at Dogpatch Labs.</p>
+          <div class="card-foot"><p class="chips">FastAPI · PyTorch · Next.js</p><span><a href="https://github.com/sadmanaraf/FixMyArea">Code</a> · <a href="https://www.linkedin.com/feed/update/urn:li:activity:7512821670571745280/">Post</a></span></div>
+        </article>
+
+      </div>
+
+      <h3 class="sub">More work</h3>
+      <ul class="rows">
+        <li>
+          <h4>Tax assistant <span class="badge">UAT</span></h4>
+          <p>A supervisor agent that delegates to specialists for law lookup, calculation and verification. Each iteration was demoed to the tax team.</p>
+        </li>
+        <li>
+          <h4>Vendor due-diligence agent <span class="badge dashed">Prototype</span></h4>
+          <p>A two-step workflow that maps policy evidence to a 47-question checklist, benchmarked against human expert assessment.</p>
+        </li>
+        <li>
+          <h4>AI Factory <span class="badge solid">Production</span></h4>
+          <p>An on-premises Kubernetes GPU platform with Kubeflow pipelines, an MLflow model registry and CI/CD, with production models onboarded onto it.</p>
+        </li>
+        <li>
+          <h4>Agentic AI strategy <span class="badge dashed">Strategy</span></h4>
+          <p>A reference architecture and delivery model that keeps architecture, data and IP in-house.</p>
+        </li>
+        <li>
+          <h4>Robi recommendation engine <span class="badge solid">Production</span></h4>
+          <p>A distributed PySpark engine with uplift modelling for about 55M subscribers.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block" id="experience">
+    <div class="wrap">
+      <h2>Experience</h2>
+      <ul class="rows">
+        <li>
+          <p class="when">2026 – 2027</p>
+          <div>
+            <h3>Dublin City University</h3>
+            <p class="role">MSc in Computing (AI with NLP)</p>
+            <p>Advanced NLP, machine translation, statistical machine learning, human factors in AI, and a summer practicum.</p>
+          </div>
+        </li>
+        <li>
+          <p class="when">Feb 2023 – Sep 2026</p>
+          <div>
+            <h3>Grameenphone (Telenor Group)</h3>
+            <p class="role">Data Scientist → AI Strategy and Development → AI Product Manager</p>
+            <p>Owned the offer recommenders for about 85M subscribers, then the enterprise GenAI and agent portfolio: OneAI, Field Genie, and the roaming assistant built with BCG and Meta. Core team member of AI&amp;I, the company-wide AI adoption programme.</p>
+          </div>
+        </li>
+        <li>
+          <p class="when">Sep 2021 – Feb 2023</p>
+          <div>
+            <h3>Robi Axiata</h3>
+            <p class="role">Specialist, AI and Predictive Analytics</p>
+            <p>Built a distributed PySpark recommendation engine with uplift modelling and a next-best-action layer for about 55M subscribers.</p>
+          </div>
+        </li>
+        <li>
+          <p class="when">Feb – Sep 2021</p>
+          <div>
+            <h3>BRAC University</h3>
+            <p class="role">Lecturer, Computer Science and Engineering</p>
+            <p>Taught five undergraduate modules, including Artificial Intelligence and System Design.</p>
+          </div>
+        </li>
+      </ul>
+      <p class="note" style="margin-top: 24px">BSc in Computer Science and Engineering, BRAC University, 2020. CGPA 3.93/4.00, Dean's List and Vice-Chancellor's List.</p>
+    </div>
+  </section>
+
+  <section class="block" id="research">
+    <div class="wrap">
+      <h2>Research, teaching and recognition</h2>
+      <div class="three">
+        <div>
+          <h3>Research</h3>
+          <p><strong>UAV-Assisted Cooperative Caching on Network Edge Using Multi-Agent Actor-Critic Reinforcement Learning.</strong> <em>IEEE Transactions on Vehicular Technology</em>, 72(2), 2022. First author. Q1 journal, 60+ citations.</p>
+          <p>Drones acting as mobile caches have to decide what to store and where to fly, and none of them can see the whole network. I framed this as a multi-agent decision problem, designed and implemented an actor-critic reinforcement learning method for it, built the simulation environment, and compared it with baseline caching policies.</p>
+          <p><a href="https://doi.org/10.1109/TVT.2022.3209079">Read the paper</a></p>
+        </div>
+        <div>
+          <h3>Teaching and speaking</h3>
+          <ul>
+            <li>Lecturer at BRAC University: five undergraduate modules, about 40 students each.</li>
+            <li>16 hands-on workshops for 400+ Grameenphone colleagues, including "From Prompts to Agents".</li>
+            <li>Invited talks at BRAC University, AUST, Daffodil International University and the University of Dhaka.</li>
+            <li>Host of the GP Growth Convention 2024, the first gathering of the whole commercial division, in front of 500 people.</li>
+            <li>Jury member for Datathon 2.0 and for FutureMakers, Grameenphone's AI competition.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Recognition</h3>
+          <ul>
+            <li>Four quarterly innovation awards and Departmental Best Employee of the Year 2023, Grameenphone.</li>
+            <li>Bertelsmann Technology Scholarship, Udacity: 500 selected from 15,000 applicants.</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3 class="sub" id="posts">Talks, awards and posts</h3>
+      <p class="note">Each one links to the original post on LinkedIn.</p>
+      <ul class="rows">
+        <li>
+          <p class="when">Sep 2026 · Post</p>
+          <div>
+            <h4><a href="https://www.linkedin.com/feed/update/urn:li:activity:7504071823580405760/">Starting an MSc at DCU</a></h4>
+            <p>Why I left a role I loved to become a beginner again.</p>
+          </div>
+        </li>
+        <li>
+          <p class="when">Sep 2026 · Post</p>
+          <div>
+            <h4><a href="https://www.linkedin.com/feed/update/urn:li:activity:7502339051560177665/">Leaving Grameenphone after three and a half years</a></h4>
+            <p>What I took with me: seeing systems, adoption, people and technology as one connected story, and no longer dreading a room full of people.</p>
+          </div>
+        </li>
+        <li>
+          <p class="when">Jan 2026 · Award</p>
+          <div>
+            <h4><a href="https://www.linkedin.com/feed/update/urn:li:activity:7417045184393170944/">Quarterly award for AI&amp;I</a></h4>
+            <p>A programme award for the company-wide AI adoption initiative. I was on the core team.</p>
+          </div>
+        </li>
+        <li>
+          <p class="when">Oct 2025 · Award</p>
+          <div>
+            <h4><a href="https://www.linkedin.com/feed/update/urn:li:activity:7387737945052495872/">Quarterly award for AI-powered personalisation in the retail channel</a></h4>
+            <p>For the recommender that shows each retailer the most relevant offers for the customer in front of them. A joint effort with the marketing, IT, product and sales teams.</p>
+          </div>
+        </li>
+        <li>
+          <p class="when">Sep 2025 · Workshop</p>
+          <div>
+            <h4><a href="https://www.linkedin.com/feed/update/urn:li:activity:7374791306671226881/">GenAI for Productivity sessions</a></h4>
+            <p>Curated and facilitated hands-on sessions that showed colleagues how to use AI tools in their daily work.</p>
+          </div>
+        </li>
+        <li>
+          <p class="when">Sep 2025 · Talk</p>
+          <div>
+            <h4><a href="https://www.linkedin.com/feed/update/urn:li:activity:7372181071645347842/">FutureMakers session at BRAC University</a></h4>
+            <p>Back at my own university to share my path into AI and introduce Grameenphone's AI competition for students.</p>
+          </div>
+        </li>
+        <li>
+          <p class="when">Aug 2025 · Launch</p>
+          <div>
+            <h4><a href="https://www.linkedin.com/feed/update/urn:li:activity:7357374311294255104/">AI&amp;I: launching the company-wide AI programme</a></h4>
+            <p>On the core team that launched the programme at the AI Townhall.</p>
+          </div>
+        </li>
+        <li>
+          <p class="when">May 2025 · Talk</p>
+          <div>
+            <h4><a href="https://www.linkedin.com/feed/update/urn:li:activity:7326477401889107969/">"AI for Future Leaders", University of Dhaka</a></h4>
+            <p>Spoke to students about how AI is applied in telecom and IT, at a seminar with the Dhaka University Career Club.</p>
+          </div>
+        </li>
+        <li>
+          <p class="when">Jul 2024 · Award</p>
+          <div>
+            <h4><a href="https://www.linkedin.com/feed/update/urn:li:activity:7214693095920082944/">My first Qaward, in my first year at Grameenphone</a></h4>
+            <p>Grameenphone's highest award for an initiative, for the offer recommendation work.</p>
+          </div>
+        </li>
+        <li>
+          <p class="when">Feb 2024 · Host</p>
+          <div>
+            <h4><a href="https://www.linkedin.com/feed/update/urn:li:activity:7165377987415068674/">Hosting the GP Growth Convention 2024</a></h4>
+            <p>Hosted the first convention to bring the whole commercial division together, in front of 500 people.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block contact" id="contact">
+    <div class="wrap">
+      <h2>If you're hiring for AI engineering, data science or AI product work, I'd like to hear about it.</h2>
+      <p class="prose">Based in Dublin. Open to summer 2027 internships (13 to 17 weeks from May) and full-time roles from October 2027.</p>
+      <div class="links">
+        <a class="btn" href="mailto:sadmanaraf@gmail.com">sadmanaraf@gmail.com</a>
+        <a href="https://www.linkedin.com/in/sadmanaraf/">LinkedIn</a>
+        <a href="https://github.com/sadmanaraf">GitHub</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">© 2026 Sadman Araf. Work systems are described in words, with made-up data in every example.</div>
+</footer>
+
+</body>
+</html>
